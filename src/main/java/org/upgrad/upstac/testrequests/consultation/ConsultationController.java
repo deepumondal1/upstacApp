@@ -104,8 +104,8 @@ public class ConsultationController {
         try {
             // replace this line of code with your implementation
             User doctorUser = userLoggedInService.getLoggedInUser();
-            TestRequest assignForConsultation = testRequestUpdateService.assignForConsultation(id, doctorUser);
-            return assignForConsultation;
+            TestRequest assignForConsultationTestResult = testRequestUpdateService.assignForConsultation(id, doctorUser);
+            return assignForConsultationTestResult;
 
         }catch (AppException e) {
             throw asBadRequest(e.getMessage());
@@ -128,7 +128,9 @@ public class ConsultationController {
 
         try {
             // replace this line of code with your implementation
-            throw new ResponseStatusException(HttpStatus.NOT_IMPLEMENTED,"Not implemented");
+            User doctorUser = userLoggedInService.getLoggedInUser();
+            TestRequest updateConsultationTestResult = testRequestUpdateService.updateConsultation(id, testResult, doctorUser);
+            return updateConsultationTestResult;
 
 
         } catch (ConstraintViolationException e) {
